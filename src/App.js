@@ -40,13 +40,15 @@ function App() {
         <nav>
           <NavLink to="/">Home</NavLink><br/>
           <NavLink to="/add">Dodaj własne ogłoszenie</NavLink><br/>
-          <NavLink to="/second">Second</NavLink><br/>
+          <NavLink to="/groups">Szukanie grup</NavLink><br/>
+          <NavLink to="/add-group">Dodaj grupę</NavLink><br/>
         </nav>
         
         <Routes>
           <Route path="/" element={<Home students={students} setStudents={setStudents} />}/>
           <Route path="/add" element={<Add students={students} setStudents={setStudents} />}/>
-          <Route path="/second" element={<Second students={students} setStudents={setStudents} />}/>
+          <Route path="/groups" element={<Second students={students} setStudents={setStudents} />}/>
+          <Route path="/add-group" element={<Second students={students} setStudents={setStudents} />}/>
         </Routes>
         </BrowserRouter>
       </main>
