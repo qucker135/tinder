@@ -7,7 +7,7 @@ const Home = (props) => {
     const [studentsValue, setStudentsValue] = useState("DESC");
 
     const handleQueryChange = (event) => {
-        console.log(event.target.value);
+        //console.log(event.target.value);
         setStudentsQuery(event.target.value);
     }
     const handleValueChange = (event) => {
@@ -16,9 +16,9 @@ const Home = (props) => {
         console.log(studentsValue); //left these two console.logs, because that's an interesting observation
     }
 
-    const studentsHTML = students.filter((it)=>(studentsValue=="DESC") ? it.desc.includes(studentsQuery) : 
-        (studentsValue=="TAGS") ? it.tags.some(el => el.includes(studentsQuery)) : 
-        (studentsValue=="SUBJ") ? it.subjects.some(el => el.includes(studentsQuery)) : true
+    const studentsHTML = students.filter((it)=>(studentsValue == "DESC") ? it.desc.includes(studentsQuery) : 
+        (studentsValue == "TAGS") ? it.tags.some(el => el.includes(studentsQuery)) : 
+        (studentsValue == "SUBJ") ? it.subjects.some(el => el.includes(studentsQuery)) : true
     )
     .map((it, i)=>{ //bad practise: https://pl.reactjs.org/docs/lists-and-keys.html#keys
 
@@ -50,8 +50,7 @@ const Home = (props) => {
 
     return ( //JSX
         <div>
-            <p>Hurra!</p>
-
+            <p>Wyszukaj ogłoszenia innych</p>
             <label for="whichList">Wyszukaj po:</label>
             <select name="whichList" id="whichList" onChange={handleValueChange}>
               <option value="DESC">Opisie</option>
@@ -60,7 +59,6 @@ const Home = (props) => {
             </select>
             <br/>
             <input type="text" name="query" id="query" required="" value={studentsQuery} onChange={handleQueryChange}/>
-            <button class="btn-primary">Zatwierdź</button>
             {studentsHTML}
         </div>
     )
