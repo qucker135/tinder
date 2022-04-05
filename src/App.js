@@ -4,7 +4,6 @@ import Home from "./Components/Home";
 import Add from "./Components/Add";
 import Group from "./Components/Group";
 import AddGroup from "./Components/AddGroup";
-import Second from "./Components/Second";
 import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
 
 function App() {
