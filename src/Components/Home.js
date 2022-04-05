@@ -16,7 +16,8 @@ const Home = (props) => {
         console.log(studentsValue); //left these two console.logs, because that's an interesting observation
     }
 
-    const studentsHTML = students.filter((it)=>(studentsValue === "DESC") ? it.desc.includes(studentsQuery) : 
+    const studentsHTML = students.filter((it) => 
+        (studentsValue === "DESC") ? it.desc.includes(studentsQuery) : 
         (studentsValue === "TAGS") ? it.tags.some(el => el.includes(studentsQuery)) : 
         (studentsValue === "SUBJ") ? it.subjects.some(el => el.includes(studentsQuery)) : true
     )

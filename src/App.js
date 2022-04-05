@@ -2,6 +2,7 @@ import './App.css';
 import { useState } from "react";
 import Home from "./Components/Home";
 import Add from "./Components/Add";
+import Group from "./Components/Group";
 import Second from "./Components/Second";
 import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
 
@@ -30,6 +31,39 @@ function App() {
     },
   ]);
 
+  const [groups, setGroups] = useState([
+    {
+      name: "Wesoła grupa",
+      members: ["Mikołaj Czerniak", "Kulash Doomchuck"],
+      desc: "Młody, dynamiczny zespół",
+      subject: "AK2"
+    },
+    {
+      name: "MŚ 2022 - grupa C",
+      members: ["Mikołaj Czerniak", "Pen Pineapple"],
+      desc: "Stary, statyczny zespół",
+      subject: "PIW"
+    },
+    {
+      name: "Grupa wzajemnej adoracji",
+      members: ["Kulash Doomchuck", "Mik Gużdżanowski"],
+      desc: "Dołącz do nas!",
+      subject: "PIPG"
+    },
+    {
+      name: "Drużyna A",
+      members: ["Pen Pineapple", "Mat Bartysiak"],
+      desc: "Szukamy kogoś takiego jak Ty!",
+      subject: "ELE"
+    },
+    {
+      name: "Załoga G",
+      members: ["Tys Marbatsiak", "Mikołaj Czerniak"],
+      desc: "A wise man once sed 's/sed/awk/g'",
+      subject: "SO2"
+    },
+  ]);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -47,7 +81,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home students={students} setStudents={setStudents} />}/>
           <Route path="/add" element={<Add students={students} setStudents={setStudents} />}/>
-          <Route path="/groups" element={<Second students={students} setStudents={setStudents} />}/>
+          <Route path="/groups" element={<Group groups={groups} setGroups={setGroups} />}/>
           <Route path="/add-group" element={<Second students={students} setStudents={setStudents} />}/>
         </Routes>
         </BrowserRouter>
