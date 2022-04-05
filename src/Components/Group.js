@@ -14,14 +14,12 @@ class Group extends React.Component {
         this.setState({
             searchBy: event.target.value
         });
-        console.log(event.target.value);
     }
 
     handleQueryChange = (event) => {
         this.setState({
             query: event.target.value
         });
-        console.log(event.target.value);
     }
 
     render(){

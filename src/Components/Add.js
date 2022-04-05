@@ -58,10 +58,10 @@ const Add = (props) => {
                 <label for="desc">Opis:</label>
                 <input id="desc" name="desc" onChange={handleDescChange}/>
                 <br/>
-                <label for="taglist">Lista tagów:</label>
+                <label for="taglist">Lista tagów (FS=" "):</label>
                 <input id="taglist" name="taglist" onChange={handleTagListChange}/>
                 <br/>
-                <label for="subjlist">Lista przedmiotów:</label>
+                <label for="subjlist">Lista przedmiotów (FS=" "):</label>
                 <input id="subjlist" name="subjlist" onChange={handleSubjListChange}/>
                 <br/>
                 <button type="button" onClick={handleEnter}>Dodaj</button>

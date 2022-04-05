@@ -7,7 +7,6 @@ const Home = (props) => {
     const [studentsValue, setStudentsValue] = useState("DESC");
 
     const handleQueryChange = (event) => {
-        //console.log(event.target.value);
         setStudentsQuery(event.target.value);
     }
     const handleValueChange = (event) => {
