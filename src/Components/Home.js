@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 
 const Home = (props) => {
     const {setStudents, students} = props;
@@ -23,6 +24,7 @@ const Home = (props) => {
     .map((it, i)=>{ //bad practise: https://pl.reactjs.org/docs/lists-and-keys.html#keys
 
         return <div key={i}>
+            <div className="Home-photo"><Link to="/profile" state={{ from: i}}><img src={it.imgSrc}/></Link></div>
             <div className="Home-name">{it.name}</div>
             <div className="Home-desc">Opis: {it.desc}</div>
             <div className="Home-tags-list">
