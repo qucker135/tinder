@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const Home = (props) => {
     const {setStudents, students} = props;
@@ -24,7 +24,7 @@ const Home = (props) => {
     .map((it, i)=>{ //bad practise: https://pl.reactjs.org/docs/lists-and-keys.html#keys
 
         return <div key={i}>
-            <div className="Home-photo"><Link to="/profile" state={{ from: i}}><img src={it.imgSrc}/></Link></div>
+            <div className="Home-photo"><Link to="/profile" state={{ from: i}}><img src={it.imgSrc} alt=""/></Link></div>
             <div className="Home-name">{it.name}</div>
             <div className="Home-desc">Opis: {it.desc}</div>
             <div className="Home-tags-list">
@@ -53,7 +53,7 @@ const Home = (props) => {
     return ( //JSX
         <div>
             <p>Wyszukaj ogłoszenia innych</p>
-            <label for="whichList">Wyszukaj po:</label>
+            <label htmlFor="whichList">Wyszukaj po:</label>
             <select name="whichList" id="whichList" onChange={handleValueChange}>
               <option value="DESC">Opisie</option>
               <option value="TAGS">Tagach</option>

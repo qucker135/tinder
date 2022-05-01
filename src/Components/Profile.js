@@ -17,7 +17,7 @@ const Profile = (props) => {
 
     return ( <>
             <h2>{studentData.name}</h2>
-            <img src={studentData.imgSrc}/> <br/>
+            <img src={studentData.imgSrc} alt=""/> <br/>
             Email: <b>{studentData.email}</b> <br/>
             O mnie: <b>{studentData.desc}</b>
         </>
