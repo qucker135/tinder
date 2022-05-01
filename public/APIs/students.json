@@ -1,0 +1,23 @@
+[
+    {
+      "name": "Mikołaj Czerniak",
+      "email": "mikolaj.czerniak@gmail.com",
+      "desc": "Młody, dynamiczny student",
+      "tags": ["c++", "verilog", "arduino", "php"],
+      "subjects": ["AK2", "PIW", "PIPG"]
+    },
+    {
+      "name": "Kulash Doomchuck",
+      "email": "kulash.doomchuck@gmail.com",
+      "desc": "Ekspert ds. budowy kompilatorów",
+      "tags": ["c++", "vhdl", "java", "php"],
+      "subjects": ["PIPG", "EAC", "ELE"]
+    },
+    {
+      "name": "Pen Pineapple",
+      "email": "apple.pen@gmail.com",
+      "desc": "Ekspert ds. JVM",
+      "tags": ["java", "kotlin", "groovy", "c#"],
+      "subjects": ["PJ", "WF", "AK2"]
+    }
+  ]
