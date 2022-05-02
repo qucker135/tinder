@@ -10,16 +10,11 @@ const SignIn = () => {
     const passRef = useRef();
 
     const handleLoggingIn = () => {
-        //console.log(loginRef.current.value);
-        //console.log(passRef.current.value);
-
         setLoggedUser(loginRef.current.value);      //context
         setLocalLoggedUser(loginRef.current.value); //localStorage
     }
 
     const handleLoggingOut = () => {
-        //console.log(localLoggedUser);
-        //localStorage.removeItem('login');
         setLocalLoggedUser("");  //localStorage
         setLoggedUser("");       //context
     }
