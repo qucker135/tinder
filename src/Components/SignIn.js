@@ -1,32 +1,36 @@
-import { useRef, useContext } from "react";
+import { useRef, useContext, useState, useEffect } from "react";
 import SignInContext from "../Contexts/SignInContext";
+import useLocalStorage from "../Hooks/useLocalStorage";
 
 const SignIn = () => {
     const [loggedUser, setLoggedUser] = useContext(SignInContext);
+    const [localLoggedUser, setLocalLoggedUser] = useLocalStorage('login', "");
     
     const loginRef = useRef();
     const passRef = useRef();
-
-    console.log(loggedUser);
 
     const handleLoggingIn = () => {
         //console.log(loginRef.current.value);
         //console.log(passRef.current.value);
 
-        setLoggedUser(loginRef.current.value);
+        setLoggedUser(loginRef.current.value);      //context
+        setLocalLoggedUser(loginRef.current.value); //localStorage
     }
 
     const handleLoggingOut = () => {
-        setLoggedUser("");
+        //console.log(localLoggedUser);
+        //localStorage.removeItem('login');
+        setLocalLoggedUser("");  //localStorage
+        setLoggedUser("");       //context
     }
 
     if(loggedUser === ""){
         return (
             <>
                 <label htmlFor="login">Login: </label>
-                <input name="login" ref={loginRef}/> <br/>
+                <input name="login" type="text" ref={loginRef}/> <br/>
                 <label htmlFor="passwd">Hasło: </label>
-                <input name="passwd" ref={passRef}/> <br/>
+                <input name="passwd" type="password" ref={passRef}/> <br/>
                 <button onClick={handleLoggingIn}>Zaloguj się</button>
             </>
         );
