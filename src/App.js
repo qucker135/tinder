@@ -6,7 +6,7 @@ import Group from "./Components/Group";
 import AddGroup from "./Components/AddGroup";
 import Profile from "./Components/Profile";
 import SignIn from './Components/SignIn';
-import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
+import {Routes, Route, NavLink, HashRouter} from 'react-router-dom';
 import axios from 'axios';
 import SignInContext from './Contexts/SignInContext';
 
@@ -32,7 +32,7 @@ function App() {
       </header>
       <main>
         <SignInContext.Provider value={useState("")}>
-        <BrowserRouter>
+        <HashRouter>
         <nav>
           <NavLink to="/tinder">Home</NavLink><br/>
           <NavLink to="/add">Dodaj własne ogłoszenie</NavLink><br/>
@@ -49,7 +49,7 @@ function App() {
           <Route path="/profile" element={<Profile students={students} setStudents={setStudents} />}/>
           <Route path="/signin" element={<SignIn students={students} setStudents={setStudents} />}/>
         </Routes>
-        </BrowserRouter>
+        </HashRouter>
         </SignInContext.Provider>
       </main>
       <footer className="App-footer">&copy; qucker135</footer>
