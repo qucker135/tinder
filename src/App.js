@@ -9,10 +9,16 @@ import SignIn from './Components/SignIn';
 import {Routes, Route, NavLink, HashRouter} from 'react-router-dom';
 import axios from 'axios';
 import SignInContext from './Contexts/SignInContext';
+import Login from './Components/Login';
+import { auth } from './firebase/init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { logout } from './firebase/users';
 
 function App() {
   const [students, setStudents] = useState([]);
   const [groups, setGroups] = useState([]);
+
+  const [userInny] = useAuthState(auth);
 
   useEffect(() => {
     axios.get('https://raw.githubusercontent.com/qucker135/PIW/main/lab3/public/APIs/students.json').then(res => {
@@ -39,6 +45,10 @@ function App() {
           <NavLink to="/groups">Szukanie grup</NavLink><br/>
           <NavLink to="/add-group">Dodaj grupę</NavLink><br/>
           <NavLink to="/signin">Zaloguj się</NavLink><br/>
+          {
+            userInny
+            && <button onClick={logout} >Wyloguj się {userInny.displayName}</button>
+            || <NavLink to="/login">Zaloguj się głupio</NavLink> }
         </nav>
                 
         <Routes>
@@ -48,6 +58,7 @@ function App() {
           <Route path="/add-group" element={<AddGroup groups={groups} setGroups={setGroups} />}/>
           <Route path="/profile" element={<Profile students={students} setStudents={setStudents} />}/>
           <Route path="/signin" element={<SignIn students={students} setStudents={setStudents} />}/>
+          <Route path="/login" element={<Login students={students} setStudents={setStudents} />}/>
         </Routes>
         </HashRouter>
         </SignInContext.Provider>
