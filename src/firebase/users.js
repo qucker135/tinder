@@ -1,6 +1,7 @@
 import { auth, firestore } from "./init";
 import {
     GoogleAuthProvider,
+    GithubAuthProvider,
     signInWithPopup,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
@@ -24,6 +25,28 @@ export const logInWithGoogle = async () => {
             await setDoc(q, {
                  name: user.displayName,
                  authProvider: "google",
+                 email: user.email,
+                 roles: ["admin", "doctor"]
+             });
+         }
+
+    } catch (err) {
+        console.error({err});
+        alert(err.message);
+    }
+};
+
+const githubProvider = new GithubAuthProvider();
+export const logInWithGithub = async () => {
+    try {
+        const response = await signInWithPopup(auth, githubProvider);
+        const user = response.user;
+        const q = doc(firestore, "users", user.uid);
+        const docs = await getDoc(q);
+        if ( ! docs.exists()) {
+            await setDoc(q, {
+                 name: user.displayName,
+                 authProvider: "github",
                  email: user.email,
                  roles: ["admin", "doctor"]
              });
