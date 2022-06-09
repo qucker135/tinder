@@ -60,20 +60,24 @@ export const logInWithGithub = async () => {
 
 
 
-// export const registerWithEmailAndPassword = async (name, email, password) => {
-//     try {
-//         const res = await createUserWithEmailAndPassword(auth, email, password);
-//         const user = res.user;
-//         await setDoc(q, {
-//             name: name,
-//             authProvider: "emailpassword",
-//             email: user.email
-//         });
-//     } catch (err) {
-//         console.error(err);
-//         alert(err.message);
-//     }
-// };
+export const registerWithEmailAndPassword = async (name, email, password) => {
+    try {
+        const res = await createUserWithEmailAndPassword(auth, email, password);
+        const user = res.user;
+        const q = doc(firestore, "users", user.uid);
+        const docs = await getDoc(q);
+        if ( ! docs.exists()) {
+            await setDoc(q, {
+                name: name,
+                authProvider: "emailpassword",
+                email: user.email
+            });
+        }
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+};
 
 
 

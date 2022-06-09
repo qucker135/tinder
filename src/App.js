@@ -10,6 +10,7 @@ import {Routes, Route, NavLink, HashRouter} from 'react-router-dom';
 import axios from 'axios';
 import SignInContext from './Contexts/SignInContext';
 import Login from './Components/Login';
+import Register from './Components/Register';
 import { auth } from './firebase/init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { logout } from './firebase/users';
@@ -48,7 +49,8 @@ function App() {
           {
             userInny
             && <button onClick={logout} >Wyloguj się {userInny.displayName}</button>
-            || <NavLink to="/login">Zaloguj się głupio</NavLink> }
+            || <><NavLink to="/login">Zaloguj się głupio</NavLink> </>
+            }
         </nav>
                 
         <Routes>
@@ -59,6 +61,7 @@ function App() {
           <Route path="/profile" element={<Profile students={students} setStudents={setStudents} />}/>
           <Route path="/signin" element={<SignIn students={students} setStudents={setStudents} />}/>
           <Route path="/login" element={<Login students={students} setStudents={setStudents} />}/>
+          <Route path="/register" element={<Register students={students} setStudents={setStudents} />}/>
         </Routes>
         </HashRouter>
         </SignInContext.Provider>
